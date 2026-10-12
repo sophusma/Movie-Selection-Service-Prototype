@@ -24,7 +24,7 @@ function Header({q}){const[v,setV]=useState(q);useEffect(()=>setV(q),[q]);
  <label className="search"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
  <input value={v} placeholder="Название, режиссёр или актёр" onChange={e=>{setV(e.target.value);go(e.target.value?`/search?q=${encodeURIComponent(e.target.value)}`:'/')}}/></label></header>}
 
-const Card=({m,tag})=><a className="card" href={`#/movie/${m.id}`}><img src={m.poster} alt={m.title} loading="lazy"/>{tag&&<span className="tag">{tag}</span>}</a>;
+const Card=({m,tag})=><a className="card" href={`#/movie/${m.id}`}><img src={`${import.meta.env.BASE_URL}${m.poster.replace(/^\//, '')}`} alt={m.title} loading="lazy"/>{tag&&<span className="tag">{tag}</span>}</a>;
 function Row({title,sub,list,children,empty}){return <section className="sec"><h2>{title} <span className="chev">›</span></h2><p className="sub">{sub}</p>
  <div className="row">{children}{list.map(m=><Card key={m.id} m={m} tag={tags(m)[0]}/>)}{!list.length&&!children&&<p className="sub">{empty}</p>}</div></section>}
 
