@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        /Movie-Selection-Service-Prototype/
+        run: npm run build -- --base=/Movie-Selection-Service-Prototype/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
